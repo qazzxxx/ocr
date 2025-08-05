@@ -1,0 +1,7 @@
+Watching for file changes with StatReloader
+[05/Aug/2025 07:41:39] "POST /api/recognize HTTP/1.1" 200 371
+[05/Aug/2025 07:41:43] "POST /api/recognize HTTP/1.1" 200 371
+[05/Aug/2025 07:43:00] "POST /api/recognize HTTP/1.1" 200 371
+[05/Aug/2025 07:43:06] "POST /api/recognize HTTP/1.1" 200 371
+Method Not Allowed: /api/recognize
+[05/Aug/2025 07:43:14] "GET /api/recognize HTTP/1.1" 405 18
