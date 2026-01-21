@@ -7,6 +7,9 @@ from PIL import Image
 from ninja.security import APIKeyHeader
 from django.conf import settings
 
+import json
+from ninja.renderers import JSONRenderer
+
 class TokenAuth(APIKeyHeader):
     param_name = "token"
 
@@ -15,8 +18,12 @@ class TokenAuth(APIKeyHeader):
             return key
         return None
 
+class UnicodeJSONRenderer(JSONRenderer):
+    def render(self, request, data, *, response_status):
+        return json.dumps(data, cls=self.encoder_class, ensure_ascii=False)
+
 # 初始化Ninja API和RapidOCR
-api = NinjaAPI(title="图片文字识别API", description="返回识别出的文字", auth=TokenAuth())
+api = NinjaAPI(title="图片文字识别API", description="返回识别出的文字", auth=TokenAuth(), renderer=UnicodeJSONRenderer())
 ocr = RapidOCR()
 
 @api.post("/recognize", summary="识别图片中的文字")
