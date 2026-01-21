@@ -2,13 +2,10 @@ version: "3.8"
 
 services:
   ocr-api:
-    build: .
+    image: ghcr.io/qazzxxx/ocr:main
     container_name: ocr
     restart: always
     ports:
       - "6632:6632"
-    volumes:
-      - ./:/app # 开发模式下挂载代码目录，便于修改
     environment:
       - TOKEN=${TOKEN}
-    command: gunicorn --bind 0.0.0.0:6632 ocr.wsgi:application
