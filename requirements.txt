@@ -6,6 +6,7 @@ charset-normalizer==3.4.2
 coloredlogs==15.0.1
 colorlog==6.9.0
 Django==5.2.4
+django-cors-headers
 django-ninja==1.4.3
 flatbuffers==25.2.10
 humanfriendly==10.0
