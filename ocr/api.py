@@ -4,9 +4,19 @@ from ninja.files import UploadedFile
 from rapidocr_onnxruntime import RapidOCR
 import io
 from PIL import Image
+from ninja.security import APIKeyHeader
+from django.conf import settings
+
+class TokenAuth(APIKeyHeader):
+    param_name = "token"
+
+    def authenticate(self, request, key):
+        if settings.OCR_API_TOKEN and key == settings.OCR_API_TOKEN:
+            return key
+        return None
 
 # 初始化Ninja API和RapidOCR
-api = NinjaAPI(title="图片文字识别API", description="接收图片并返回识别出的文字")
+api = NinjaAPI(title="图片文字识别API", description="接收图片并返回识别出的文字", auth=TokenAuth())
 ocr = RapidOCR()
 
 @api.post("/recognize", summary="识别图片中的文字")

@@ -10,6 +10,5 @@ services:
     volumes:
       - ./:/app # 开发模式下挂载代码目录，便于修改
     environment:
-      - DEBUG=0
-      - ALLOWED_HOSTS=localhost,127.0.0.1,你的NAS的IP地址
+      - TOKEN=${TOKEN}
     command: gunicorn --bind 0.0.0.0:6632 ocr.wsgi:application
