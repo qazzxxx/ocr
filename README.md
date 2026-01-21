@@ -23,7 +23,7 @@
         ports:
           - "6632:6632"
         environment:
-          - TOKEN=${TOKEN}
+          - TOKEN=your_secure_token
     ```
 
 ## 接口调用说明 (API Usage)

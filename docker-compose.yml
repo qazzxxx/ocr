@@ -8,4 +8,4 @@ services:
     ports:
       - "6632:6632"
     environment:
-      - TOKEN=${TOKEN}
+      - TOKEN=your_secure_token
